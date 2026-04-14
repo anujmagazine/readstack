@@ -13,6 +13,16 @@ const OLLAMA_URL = 'http://localhost:11434';
 const MODELS = ['gemma4:latest', 'gemma3:4b', 'gemma3:2b'];
 let activeModel = null; // auto-detected on first use
 
+// Check available system memory to pick the right model
+function getFreeMem() {
+  return os.freemem();
+}
+const MODEL_MEM_REQ = {
+  'gemma4:latest': 7 * 1024 * 1024 * 1024,   // ~7GB
+  'gemma3:4b': 3.5 * 1024 * 1024 * 1024,     // ~3.5GB
+  'gemma3:2b': 2 * 1024 * 1024 * 1024         // ~2GB
+};
+
 // Ensure uploads directory exists
 if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
@@ -130,27 +140,36 @@ async function detectModel() {
     const available = data.models.map(m => m.name);
     console.log(`  [ollama] Available models: ${available.join(', ')}`);
 
+    const freeMem = getFreeMem();
+    console.log(`  [ollama] Free system memory: ${(freeMem / 1024 / 1024 / 1024).toFixed(1)} GB`);
+
     for (const model of MODELS) {
-      if (available.includes(model)) {
-        // Try a quick test to see if it actually loads
-        try {
-          const test = await fetch(`${OLLAMA_URL}/api/generate`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ model, prompt: 'hi', stream: false, options: { num_predict: 5 } })
-          });
-          const testData = await test.json();
-          if (testData.error) {
-            console.log(`  [ollama] ${model} error: ${testData.error}`);
-            continue;
-          }
-          activeModel = model;
-          console.log(`  [ollama] Using model: ${model}`);
-          return model;
-        } catch (e) {
-          console.log(`  [ollama] ${model} test failed: ${e.message}`);
+      if (!available.includes(model)) continue;
+
+      // Check if we have enough memory for this model
+      const needed = MODEL_MEM_REQ[model] || 4 * 1024 * 1024 * 1024;
+      if (freeMem < needed) {
+        console.log(`  [ollama] ${model} needs ${(needed/1024/1024/1024).toFixed(1)}GB, skipping (not enough RAM)`);
+        continue;
+      }
+
+      try {
+        const test = await fetch(`${OLLAMA_URL}/api/generate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ model, prompt: 'Summarize: AI is transforming enterprises.', stream: false, options: { num_predict: 15 } })
+        });
+        const testData = await test.json();
+        if (testData.error) {
+          console.log(`  [ollama] ${model} error: ${testData.error}`);
           continue;
         }
+        activeModel = model;
+        console.log(`  [ollama] Using model: ${model}`);
+        return model;
+      } catch (e) {
+        console.log(`  [ollama] ${model} test failed: ${e.message}`);
+        continue;
       }
     }
     console.log(`  [ollama] No suitable model found`);
