@@ -35,8 +35,6 @@
       min-height: 100dvh;
       -webkit-tap-highlight-color: transparent;
     }
-
-    /* ---- Header ---- */
     .header {
       padding: 20px 20px 0;
       display: flex;
@@ -46,306 +44,135 @@
     .header h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
     .header h1 span { color: var(--accent); }
     .header-right { display: flex; align-items: center; gap: 12px; }
-    .header-stats {
-      display: flex;
-      gap: 12px;
-      font-size: 12px;
-      color: var(--text2);
-    }
+    .header-stats { display: flex; gap: 12px; font-size: 12px; color: var(--text2); }
     .header-stats strong { color: var(--text); }
-
-    /* AI Status indicator */
     .ai-status {
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 12px;
-      display: none;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
+      font-size: 11px; padding: 3px 10px; border-radius: 12px;
+      display: none; align-items: center; gap: 5px; cursor: pointer;
     }
-    .ai-status.active {
-      display: flex;
-      background: rgba(79,156,247,0.12);
-      color: var(--accent);
-    }
+    .ai-status.active { display: flex; background: rgba(79,156,247,0.12); color: var(--accent); }
     .ai-spinner {
-      width: 10px; height: 10px;
-      border: 2px solid var(--accent);
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+      width: 10px; height: 10px; border: 2px solid var(--accent);
+      border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ---- Input Area ---- */
+    /* Input Area */
     .input-area {
-      padding: 16px 20px;
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
+      padding: 16px 20px; position: sticky; top: 0;
+      background: var(--bg); z-index: 100; border-bottom: 1px solid var(--border);
     }
-    .input-row {
-      display: flex;
-      gap: 8px;
-    }
+    .input-row { display: flex; gap: 8px; }
     .input-row input {
-      flex: 1;
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 13px 16px;
-      color: var(--text);
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.2s;
+      flex: 1; min-width: 0;
+      background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 13px 16px; color: var(--text); font-size: 15px; outline: none;
     }
     .input-row input:focus { border-color: var(--accent); }
     .input-row input::placeholder { color: var(--text3); }
     .input-row .add-btn {
-      background: var(--accent);
-      border: none;
-      border-radius: var(--radius);
-      color: #fff;
-      font-weight: 700;
-      font-size: 22px;
-      width: 50px;
-      cursor: pointer;
-      transition: opacity 0.15s;
+      background: var(--accent); border: none; border-radius: var(--radius); color: #fff;
+      font-weight: 700; font-size: 22px; min-width: 50px; flex-shrink: 0;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
     }
     .input-row .add-btn:active { opacity: 0.7; }
     .input-row .import-btn {
-      background: var(--surface2);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text2);
-      font-size: 13px;
-      padding: 0 14px;
-      cursor: pointer;
-      white-space: nowrap;
+      background: var(--surface2); border: 1.5px solid var(--border); border-radius: var(--radius);
+      color: var(--text2); font-size: 13px; padding: 0 14px; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0;
     }
     .input-row .import-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .paste-hint {
+      font-size: 11px; color: var(--text3); margin-top: 4px; text-align: center;
+    }
 
-    /* ---- Tabs ---- */
+    /* Tabs */
     .tabs {
-      display: flex;
-      gap: 0;
-      padding: 0 20px;
-      margin-top: 4px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border-bottom: 1px solid var(--border);
+      display: flex; gap: 0; padding: 0 20px; margin-top: 4px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch; border-bottom: 1px solid var(--border);
     }
     .tabs::-webkit-scrollbar { display: none; }
     .tab {
-      padding: 12px 16px 10px;
-      font-size: 13px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      white-space: nowrap;
-      background: none;
-      color: var(--text3);
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
+      padding: 12px 14px 10px; font-size: 13px; font-weight: 600; border: none;
+      cursor: pointer; white-space: nowrap; background: none; color: var(--text3);
+      border-bottom: 2px solid transparent; transition: all 0.2s;
     }
     .tab:hover { color: var(--text2); }
     .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
     .tab .badge {
-      font-size: 10px;
-      background: var(--surface2);
-      color: var(--text2);
-      padding: 1px 6px;
-      border-radius: 10px;
-      margin-left: 6px;
-      vertical-align: middle;
+      font-size: 10px; background: var(--surface2); color: var(--text2);
+      padding: 1px 6px; border-radius: 10px; margin-left: 5px; vertical-align: middle;
     }
     .tab.active .badge { background: rgba(79,156,247,0.15); color: var(--accent); }
 
-    /* ---- Item List ---- */
+    /* List */
     .list-container { padding: 8px 20px 120px; }
-    .list-empty {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text3);
-    }
+    .list-empty { text-align: center; padding: 60px 20px; color: var(--text3); }
     .list-empty .emoji { font-size: 40px; margin-bottom: 12px; }
     .list-empty p { font-size: 14px; line-height: 1.5; }
 
-    /* ---- Single Item Row ---- */
+    /* Item Row */
     .item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-      transition: opacity 0.3s;
+      display: flex; align-items: flex-start; gap: 12px; padding: 14px 0;
+      border-bottom: 1px solid var(--border); transition: opacity 0.3s;
     }
     .item:last-child { border-bottom: none; }
-    .item.removing {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: all 0.35s;
-    }
-
+    .item.removing { opacity: 0; transform: translateX(40px); transition: all 0.35s; }
     .item-priority {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 800;
-      background: var(--surface2);
-      color: var(--text3);
+      flex-shrink: 0; width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; background: var(--surface2); color: var(--text3);
     }
     .item-priority.p-high { background: rgba(248,113,113,0.15); color: var(--red); }
     .item-priority.p-med { background: rgba(251,191,36,0.15); color: var(--yellow); }
     .item-priority.p-low { background: rgba(52,211,153,0.15); color: var(--green); }
-
     .item-rank {
-      flex-shrink: 0;
-      width: 28px;
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--text3);
-      text-align: center;
-      padding-top: 2px;
+      flex-shrink: 0; width: 28px; font-size: 14px; font-weight: 800;
+      color: var(--text3); text-align: center; padding-top: 2px;
     }
-
     .item-body { flex: 1; min-width: 0; }
-    .item-title {
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.45;
-      word-break: break-word;
-    }
+    .item-title { font-size: 14px; font-weight: 500; line-height: 1.45; word-break: break-word; }
     .item-title a { color: var(--text); text-decoration: none; }
     .item-title a:hover { color: var(--accent); text-decoration: underline; }
-
     .item-url {
-      font-size: 12px;
-      color: var(--text3);
-      margin-top: 3px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 12px; color: var(--text3); margin-top: 3px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .item-url a { color: var(--text3); text-decoration: none; }
     .item-url a:hover { color: var(--accent); }
 
-    /* ---- AI Summary ---- */
+    /* AI Summary */
     .item-summary {
-      margin-top: 6px;
-      padding: 8px 10px;
-      background: var(--surface);
-      border-radius: 6px;
-      border-left: 3px solid var(--accent);
-      font-size: 12.5px;
-      line-height: 1.55;
-      color: var(--text2);
+      margin-top: 6px; padding: 8px 10px; background: var(--surface);
+      border-radius: 6px; border-left: 3px solid var(--accent);
+      font-size: 12.5px; line-height: 1.55; color: var(--text2);
     }
     .item-summary .summary-label {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--accent);
-      margin-bottom: 3px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--accent); margin-bottom: 3px; display: flex; align-items: center; gap: 5px;
     }
-    .item-summary .summary-label .approach-tag {
-      font-weight: 500;
-      color: var(--text3);
-      text-transform: none;
-      letter-spacing: 0;
-    }
-    .item-summary.ai-pending {
-      border-left-color: var(--text3);
-      color: var(--text3);
-      font-style: italic;
-    }
-    .item-summary.ai-processing {
-      border-left-color: var(--yellow);
-    }
-    .item-summary.ai-failed {
-      border-left-color: var(--red);
-      color: var(--text3);
-    }
+    .item-summary .approach-tag { font-weight: 500; color: var(--text3); text-transform: none; letter-spacing: 0; }
+    .item-summary.ai-processing { border-left-color: var(--yellow); }
+    .item-summary.ai-failed { border-left-color: var(--red); color: var(--text3); }
 
-    /* ---- Attachments ---- */
-    .item-attachments {
-      display: flex;
-      gap: 6px;
-      margin-top: 6px;
-      flex-wrap: wrap;
-    }
+    /* Attachments */
+    .item-attachments { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
     .attachment {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 8px;
-      background: var(--surface2);
-      border-radius: 6px;
-      font-size: 11px;
-      color: var(--text2);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      transition: border-color 0.15s;
+      display: flex; align-items: center; gap: 5px; padding: 4px 8px;
+      background: var(--surface2); border-radius: 6px; font-size: 11px; color: var(--text2);
+      text-decoration: none; border: 1px solid var(--border); transition: border-color 0.15s;
     }
     .attachment:hover { border-color: var(--accent); color: var(--accent); }
     .attachment-icon { font-size: 14px; }
-    .attachment .att-del {
-      margin-left: 4px;
-      color: var(--text3);
-      cursor: pointer;
-      font-size: 12px;
-    }
+    .attachment .att-del { margin-left: 4px; color: var(--text3); cursor: pointer; font-size: 12px; }
     .attachment .att-del:hover { color: var(--red); }
-    .attachment-thumb {
-      width: 40px;
-      height: 40px;
-      border-radius: 4px;
-      object-fit: cover;
-    }
+    .attachment-thumb { width: 40px; height: 40px; border-radius: 4px; object-fit: cover; }
 
-    /* Upload button */
-    .upload-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 8px;
-      background: none;
-      border: 1px dashed var(--border);
-      border-radius: 6px;
-      font-size: 11px;
-      color: var(--text3);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .upload-trigger:hover { border-color: var(--accent); color: var(--accent); }
-
-    .item-meta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 6px;
-      flex-wrap: wrap;
-    }
+    .item-meta { display: flex; align-items: center; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
     .item-date { font-size: 11px; color: var(--text3); }
     .pillar-tag {
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
+      font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.3px;
     }
     .pillar-literacy { background: rgba(79,156,247,0.12); color: var(--accent); }
     .pillar-adoption { background: rgba(167,139,250,0.12); color: var(--purple); }
@@ -353,31 +180,12 @@
     .tag-experiment { background: rgba(244,114,182,0.12); color: var(--pink); }
     .tag-content { background: rgba(52,211,153,0.12); color: var(--green); }
 
-    .item-actions {
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      align-items: flex-end;
-      padding-top: 2px;
-    }
-    .item-actions-row {
-      display: flex;
-      gap: 4px;
-    }
+    .item-actions { flex-shrink: 0; display: flex; flex-direction: column; gap: 4px; align-items: flex-end; padding-top: 2px; }
+    .item-actions-row { display: flex; gap: 4px; }
     .action-btn {
-      width: 30px;
-      height: 30px;
-      border-radius: 7px;
-      border: 1.5px solid var(--border);
-      background: none;
-      color: var(--text3);
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.15s;
+      width: 30px; height: 30px; border-radius: 7px; border: 1.5px solid var(--border);
+      background: none; color: var(--text3); font-size: 14px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all 0.15s;
     }
     .action-btn:hover { border-color: var(--green); color: var(--green); }
     .action-btn.undo-btn:hover { border-color: var(--yellow); color: var(--yellow); }
@@ -390,122 +198,137 @@
     .done-date { font-size: 11px; color: var(--green); }
 
     .priority-group-header {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text3);
-      padding: 16px 0 6px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--text3); padding: 16px 0 6px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 8px;
     }
-    .priority-group-header .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-    }
+    .priority-group-header .dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    /* Summarize All button */
-    .summarize-all-bar {
-      display: flex;
-      justify-content: flex-end;
-      padding: 8px 0 0;
-    }
+    .summarize-all-bar { display: flex; justify-content: flex-end; padding: 8px 0 0; }
     .summarize-all-btn {
-      padding: 6px 14px;
-      border-radius: 8px;
-      border: 1.5px solid var(--border);
-      background: none;
-      color: var(--text2);
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s;
+      padding: 6px 14px; border-radius: 8px; border: 1.5px solid var(--border);
+      background: none; color: var(--text2); font-size: 12px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; gap: 6px;
     }
     .summarize-all-btn:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* Dashboard */
+    .dashboard { padding: 16px 0; }
+    .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .dash-card {
+      background: var(--surface); border-radius: 12px; padding: 16px;
+      border: 1px solid var(--border); position: relative; overflow: hidden;
+    }
+    .dash-card.full { grid-column: 1 / -1; }
+    .dash-card .dash-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; }
+    .dash-card .dash-value { font-size: 32px; font-weight: 800; margin: 4px 0 2px; }
+    .dash-card .dash-sub { font-size: 12px; color: var(--text2); }
+    .dash-card.urgent { border-color: var(--red); }
+    .dash-card.urgent .dash-value { color: var(--red); }
+    .dash-card.good { border-color: var(--green); }
+    .dash-card.good .dash-value { color: var(--green); }
+
+    .progress-track { background: var(--surface2); border-radius: 6px; height: 10px; margin: 8px 0 4px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 6px; transition: width 0.5s; }
+
+    .streak-bar { display: flex; gap: 4px; margin: 8px 0; }
+    .streak-day {
+      width: 32px; height: 32px; border-radius: 6px; display: flex;
+      align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+      background: var(--surface2); color: var(--text3);
+    }
+    .streak-day.hit { background: rgba(52,211,153,0.2); color: var(--green); }
+    .streak-day.today { border: 2px solid var(--accent); }
+
+    .dash-nudge {
+      background: linear-gradient(135deg, rgba(248,113,113,0.1), rgba(251,191,36,0.1));
+      border: 1px solid rgba(248,113,113,0.3); border-radius: 12px;
+      padding: 16px; margin-bottom: 12px; text-align: center;
+    }
+    .dash-nudge .nudge-msg { font-size: 15px; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
+    .dash-nudge .nudge-action {
+      display: inline-block; padding: 8px 20px; background: var(--accent); color: #fff;
+      border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
+      text-decoration: none; border: none;
+    }
+    .dash-nudge .nudge-action:active { opacity: 0.7; }
+
+    .oldest-item {
+      background: var(--surface); border: 1px solid var(--red); border-radius: 10px;
+      padding: 12px 16px; margin-top: 8px;
+    }
+    .oldest-item .label { font-size: 10px; color: var(--red); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+    .oldest-item .oi-title { font-size: 14px; margin-top: 4px; }
+    .oldest-item .oi-title a { color: var(--text); text-decoration: none; }
+    .oldest-item .oi-age { font-size: 12px; color: var(--text3); margin-top: 4px; }
+
     /* Modal */
     .modal-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.75);
-      z-index: 200;
-      display: none;
-      align-items: flex-end;
-      justify-content: center;
+      position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 200;
+      display: none; align-items: flex-end; justify-content: center;
     }
     .modal-overlay.open { display: flex; }
     .modal {
-      background: var(--surface);
-      border-radius: 16px 16px 0 0;
-      padding: 24px 20px;
-      width: 100%;
-      max-width: 640px;
-      max-height: 80dvh;
-      overflow-y: auto;
+      background: var(--surface); border-radius: 16px 16px 0 0; padding: 24px 20px;
+      width: 100%; max-width: 640px; max-height: 80dvh; overflow-y: auto;
     }
     .modal h2 { font-size: 17px; margin-bottom: 4px; }
     .modal .hint { font-size: 12px; color: var(--text3); margin-bottom: 12px; }
     .modal textarea {
-      width: 100%;
-      min-height: 220px;
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text);
-      font-size: 13px;
+      width: 100%; min-height: 220px; background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: var(--radius); color: var(--text); font-size: 13px;
       font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
-      padding: 12px;
-      resize: vertical;
-      outline: none;
-      line-height: 1.6;
+      padding: 12px; resize: vertical; outline: none; line-height: 1.6;
     }
     .modal textarea:focus { border-color: var(--accent); }
-    .modal-actions {
-      display: flex; gap: 8px;
-      margin-top: 12px; justify-content: flex-end;
+    .modal input[type="text"] {
+      width: 100%; background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: var(--radius); color: var(--text); font-size: 14px;
+      padding: 12px; outline: none; margin-bottom: 10px;
     }
+    .modal input[type="text"]:focus { border-color: var(--accent); }
+    .modal input[type="text"]::placeholder { color: var(--text3); }
+    .modal-actions { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }
     .btn {
-      padding: 10px 20px;
-      border-radius: var(--radius);
-      border: none;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
+      padding: 10px 20px; border-radius: var(--radius); border: none;
+      font-size: 14px; font-weight: 600; cursor: pointer;
     }
     .btn:active { opacity: 0.7; }
     .btn-primary { background: var(--accent); color: #fff; }
     .btn-ghost { background: var(--surface2); color: var(--text2); }
 
-    /* Toast */
+    /* Paste drop zone */
+    .paste-overlay {
+      position: fixed; inset: 0; background: rgba(79,156,247,0.1); z-index: 150;
+      display: none; align-items: center; justify-content: center;
+      border: 3px dashed var(--accent); pointer-events: none;
+    }
+    .paste-overlay.active { display: flex; }
+    .paste-overlay span { font-size: 18px; font-weight: 700; color: var(--accent); background: var(--bg); padding: 12px 24px; border-radius: 12px; }
+
+    /* File preview in modal */
+    .upload-preview {
+      margin: 10px 0; text-align: center;
+    }
+    .upload-preview img {
+      max-width: 100%; max-height: 200px; border-radius: 8px; border: 1px solid var(--border);
+    }
+    .upload-preview .file-name {
+      font-size: 12px; color: var(--text2); margin-top: 6px;
+    }
+
     .toast {
-      position: fixed;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%) translateY(80px);
-      background: var(--surface2);
-      color: var(--text);
-      padding: 10px 24px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      z-index: 300;
-      transition: transform 0.3s;
+      position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--surface2); color: var(--text); padding: 10px 24px; border-radius: 10px;
+      font-size: 14px; font-weight: 600; z-index: 300; transition: transform 0.3s;
       border: 1px solid var(--border);
     }
     .toast.show { transform: translateX(-50%) translateY(0); }
-
-    /* Hidden file input */
     .hidden-upload { display: none; }
 
     @media (min-width: 768px) {
-      .list-container, .tabs, .input-area, .header {
-        max-width: 720px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+      .list-container, .tabs, .input-area, .header { max-width: 720px; margin-left: auto; margin-right: auto; }
+      .dash-grid { grid-template-columns: 1fr 1fr 1fr; }
     }
   </style>
 </head>
@@ -529,15 +352,16 @@
 <div class="input-area">
   <div class="input-row">
     <input type="text" id="quick-input"
-      placeholder="Paste link or type: LEARN- topic https://..."
+      placeholder="Paste link, text, or Ctrl+V a screenshot..."
       autocomplete="off" autocorrect="off" spellcheck="false">
-    <button class="add-btn" id="add-btn">+</button>
-    <button class="import-btn" id="open-import">Bulk</button>
+    <button type="button" class="add-btn" id="add-btn">+</button>
+    <button type="button" class="import-btn" id="open-import">Bulk</button>
   </div>
 </div>
 
 <div class="tabs" id="tabs-bar">
-  <button class="tab active" data-tab="all">All <span class="badge" id="badge-all">0</span></button>
+  <button class="tab active" data-tab="dashboard">Dashboard</button>
+  <button class="tab" data-tab="all">All <span class="badge" id="badge-all">0</span></button>
   <button class="tab" data-tab="prioritized">Prioritized <span class="badge" id="badge-pri">0</span></button>
   <button class="tab" data-tab="experiments">Experiments <span class="badge" id="badge-exp">0</span></button>
   <button class="tab" data-tab="content">Content Ideas <span class="badge" id="badge-con">0</span></button>
@@ -547,6 +371,9 @@
 <div class="list-container" id="list-container"></div>
 
 <input type="file" class="hidden-upload" id="file-upload" accept=".png,.jpg,.jpeg,.gif,.webp,.pdf,.md,.txt">
+
+<!-- Paste overlay -->
+<div class="paste-overlay" id="paste-overlay"><span>Drop screenshot here</span></div>
 
 <!-- Bulk Import Modal -->
 <div class="modal-overlay" id="import-modal">
@@ -563,13 +390,31 @@
   </div>
 </div>
 
+<!-- Attach File Modal (screenshot/pdf + URL) -->
+<div class="modal-overlay" id="attach-modal">
+  <div class="modal">
+    <h2>Attach File</h2>
+    <p class="hint">Add a URL for this item (optional). The screenshot/file will be attached.</p>
+    <div class="upload-preview" id="attach-preview"></div>
+    <input type="text" id="attach-url" placeholder="https://... (optional URL for this item)">
+    <input type="text" id="attach-title" placeholder="Title or description (optional)">
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="attach-cancel">Cancel</button>
+      <button class="btn btn-primary" id="attach-save">Save</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
 // ====== State ======
-let currentTab = 'all';
+let currentTab = 'dashboard';
 let pollTimer = null;
 let uploadTargetId = null;
+let pendingFile = null; // for screenshot paste / attach modal
+let cachedStats = null;
+let cachedItems = null;
 
 const $list = document.getElementById('list-container');
 const $input = document.getElementById('quick-input');
@@ -588,13 +433,19 @@ async function api(path, opts = {}) {
 
 // ====== Data Loading ======
 async function loadTab() {
+  if (currentTab === 'dashboard') {
+    await loadDashboard();
+    loadStats();
+    checkAiStatus();
+    return;
+  }
   let items;
   if (currentTab === 'all') items = await api('/items?status=pending');
   else if (currentTab === 'prioritized') items = await api('/items/prioritized');
   else if (currentTab === 'experiments') items = await api('/items/experiments');
   else if (currentTab === 'content') items = await api('/items/content');
   else if (currentTab === 'done') items = await api('/items/done');
-
+  cachedItems = items;
   render(items);
   loadStats();
   checkAiStatus();
@@ -602,6 +453,7 @@ async function loadTab() {
 
 async function loadStats() {
   const s = await api('/stats');
+  cachedStats = s;
   document.getElementById('stat-pending').textContent = s.pending;
   document.getElementById('stat-done').textContent = s.completed;
   document.getElementById('stat-week').textContent = s.completedThisWeek;
@@ -620,19 +472,17 @@ async function checkAiStatus() {
   if (active > 0) {
     $ai.classList.add('active');
     $aiText.textContent = `Summarizing ${active}...`;
-    // Poll for updates while summarization is active
     if (!pollTimer) {
       pollTimer = setInterval(async () => {
         const s2 = await api('/ai-status');
         const a2 = s2.processing + s2.pending;
         if (a2 === 0) {
-          clearInterval(pollTimer);
-          pollTimer = null;
+          clearInterval(pollTimer); pollTimer = null;
           $ai.classList.remove('active');
-          loadTab(); // refresh to show new summaries
+          loadTab();
         } else {
           $aiText.textContent = `Summarizing ${a2}...`;
-          loadTab(); // refresh periodically to show progress
+          loadTab();
         }
       }, 5000);
     }
@@ -642,197 +492,282 @@ async function checkAiStatus() {
   }
 }
 
+// ====== Dashboard ======
+async function loadDashboard() {
+  const [stats, allItems, doneItems, nextItems] = await Promise.all([
+    api('/stats'),
+    api('/items?status=pending'),
+    api('/items/done'),
+    api('/items/prioritized')
+  ]);
+  cachedStats = stats;
+
+  const total = stats.pending + stats.completed;
+  const pctDone = total > 0 ? Math.round((stats.completed / total) * 100) : 0;
+
+  // Age analysis
+  const now = Date.now();
+  const ages = allItems.map(i => Math.floor((now - new Date(i.created_at).getTime()) / 86400000));
+  const oldest = Math.max(...ages, 0);
+  const avgAge = ages.length > 0 ? Math.round(ages.reduce((a,b) => a+b, 0) / ages.length) : 0;
+  const staleCount = ages.filter(a => a > 7).length;
+
+  // Weekly streak - last 7 days
+  const weekDays = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(now - i * 86400000);
+    const dayStr = d.toISOString().slice(0, 10);
+    const count = doneItems.filter(item => item.completed_at && item.completed_at.slice(0,10) === dayStr).length;
+    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    weekDays.push({ label: dayNames[d.getDay()], count, isToday: i === 0 });
+  }
+
+  // Weekly goal (5 items)
+  const weeklyGoal = 5;
+  const weekPct = Math.min(100, Math.round((stats.completedThisWeek / weeklyGoal) * 100));
+
+  // Urgency level
+  let urgencyMsg, urgencyColor;
+  if (stats.pending > 30) { urgencyMsg = 'Your backlog is out of control! Read something NOW.'; urgencyColor = 'var(--red)'; }
+  else if (stats.pending > 20) { urgencyMsg = 'Backlog is growing fast. Time to clear some items today.'; urgencyColor = 'var(--orange)'; }
+  else if (stats.pending > 10) { urgencyMsg = 'Getting heavy. Pick 2-3 items and knock them out.'; urgencyColor = 'var(--yellow)'; }
+  else if (stats.pending > 0) { urgencyMsg = 'Manageable backlog. Stay on track!'; urgencyColor = 'var(--green)'; }
+  else { urgencyMsg = 'Inbox zero! You\'re a machine.'; urgencyColor = 'var(--green)'; }
+
+  // Top priority item to read
+  const topItem = nextItems[0];
+
+  $list.innerHTML = `
+    <div class="dashboard">
+      ${stats.pending > 5 ? `
+      <div class="dash-nudge">
+        <div class="nudge-msg">${urgencyMsg}</div>
+        ${topItem ? `<button class="nudge-action" onclick="window.open('${esc(topItem.url || '')}','_blank');markDone(${topItem.id})">
+          Read #1: ${esc((topItem.ai_title || topItem.title || '').slice(0, 40))}...
+        </button>` : ''}
+      </div>` : ''}
+
+      <div class="dash-grid">
+        <div class="dash-card ${stats.pending > 20 ? 'urgent' : stats.pending < 5 ? 'good' : ''}">
+          <div class="dash-label">Backlog</div>
+          <div class="dash-value">${stats.pending}</div>
+          <div class="dash-sub">items to read</div>
+        </div>
+        <div class="dash-card ${stats.completedThisWeek >= weeklyGoal ? 'good' : ''}">
+          <div class="dash-label">This Week</div>
+          <div class="dash-value">${stats.completedThisWeek}</div>
+          <div class="dash-sub">of ${weeklyGoal} goal</div>
+        </div>
+        <div class="dash-card ${oldest > 14 ? 'urgent' : ''}">
+          <div class="dash-label">Oldest Item</div>
+          <div class="dash-value">${oldest}d</div>
+          <div class="dash-sub">${staleCount} items > 1 week old</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-label">Avg Age</div>
+          <div class="dash-value">${avgAge}d</div>
+          <div class="dash-sub">per unread item</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-label">All-Time Done</div>
+          <div class="dash-value">${stats.completed}</div>
+          <div class="dash-sub">${pctDone}% completion rate</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-label">Experiments</div>
+          <div class="dash-value">${stats.experiments}</div>
+          <div class="dash-sub">waiting to try</div>
+        </div>
+      </div>
+
+      <div class="dash-card full">
+        <div class="dash-label">Weekly Goal Progress</div>
+        <div class="progress-track">
+          <div class="progress-fill" style="width:${weekPct}%;background:${weekPct >= 100 ? 'var(--green)' : weekPct >= 60 ? 'var(--yellow)' : 'var(--red)'}"></div>
+        </div>
+        <div class="dash-sub">${stats.completedThisWeek} / ${weeklyGoal} items read (${weekPct}%)</div>
+      </div>
+
+      <div class="dash-card full" style="margin-top:10px">
+        <div class="dash-label">7-Day Reading Streak</div>
+        <div class="streak-bar">
+          ${weekDays.map(d => `
+            <div class="streak-day ${d.count > 0 ? 'hit' : ''} ${d.isToday ? 'today' : ''}">
+              ${d.count > 0 ? d.count : d.label}
+            </div>
+          `).join('')}
+        </div>
+        <div class="dash-sub">${weekDays.filter(d => d.count > 0).length} of 7 days active</div>
+      </div>
+
+      ${topItem ? `
+      <div class="oldest-item" style="margin-top: 12px; border-color: var(--accent);">
+        <div class="label" style="color:var(--accent)">Top Priority - Read Next</div>
+        <div class="oi-title"><a href="${esc(topItem.url || '')}" target="_blank">${esc(topItem.ai_title || topItem.title || 'Untitled')}</a></div>
+        ${topItem.ai_summary ? `<div style="font-size:12px;color:var(--text2);margin-top:4px">${esc(topItem.ai_summary.slice(0,150))}...</div>` : ''}
+        <div class="oi-age" style="margin-top:6px">
+          <button class="btn btn-primary" style="padding:6px 16px;font-size:12px" onclick="window.open('${esc(topItem.url || '')}','_blank')">Open & Read</button>
+          <button class="btn btn-ghost" style="padding:6px 16px;font-size:12px;margin-left:6px" onclick="markDone(${topItem.id})">Mark Done</button>
+        </div>
+      </div>` : ''}
+
+      <div class="dash-card full" style="margin-top:10px">
+        <div class="dash-label">Backlog by Category</div>
+        <div style="margin-top:8px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+            <span>Literacy</span><span style="color:var(--accent)">${allItems.filter(i => i.analysis?.pillars?.literacy > 0).length}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+            <span>Adoption</span><span style="color:var(--purple)">${allItems.filter(i => i.analysis?.pillars?.adoption > 0).length}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+            <span>ROI</span><span style="color:var(--yellow)">${allItems.filter(i => i.analysis?.pillars?.roi > 0).length}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+            <span>Content Ideas</span><span style="color:var(--green)">${stats.content}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:13px">
+            <span>Experiments</span><span style="color:var(--pink)">${stats.experiments}</span>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
 // ====== Rendering ======
 function formatDate(iso) {
   if (!iso) return '';
   const d = new Date(iso);
-  const day = d.getDate();
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${day} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  return `${d.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]} ${d.getFullYear()}`;
 }
-
 function formatUrl(url) {
   if (!url) return '';
   try {
     const u = new URL(url);
-    let display = u.hostname.replace('www.', '');
-    if (u.pathname.length > 1) display += u.pathname.substring(0, 30);
-    if (u.pathname.length > 30) display += '...';
-    return display;
-  } catch { return url.slice(0, 50); }
+    let d = u.hostname.replace('www.','');
+    if (u.pathname.length > 1) d += u.pathname.substring(0,30);
+    if (u.pathname.length > 30) d += '...';
+    return d;
+  } catch { return url.slice(0,50); }
 }
-
 function esc(s) {
   if (!s) return '';
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-
-function pillarTags(analysis) {
-  let html = '';
-  if (analysis.pillars.literacy > 0) html += '<span class="pillar-tag pillar-literacy">Literacy</span>';
-  if (analysis.pillars.adoption > 0) html += '<span class="pillar-tag pillar-adoption">Adoption</span>';
-  if (analysis.pillars.roi > 0) html += '<span class="pillar-tag pillar-roi">ROI</span>';
-  return html;
+function pillarTags(a) {
+  let h = '';
+  if (a.pillars.literacy > 0) h += '<span class="pillar-tag pillar-literacy">Literacy</span>';
+  if (a.pillars.adoption > 0) h += '<span class="pillar-tag pillar-adoption">Adoption</span>';
+  if (a.pillars.roi > 0) h += '<span class="pillar-tag pillar-roi">ROI</span>';
+  return h;
 }
-
-function getPriorityClass(score) {
-  if (score >= 10) return 'p-high';
-  if (score >= 5) return 'p-med';
-  return 'p-low';
-}
-
-function getPriorityBucket(score) {
-  if (score >= 12) return { label: 'Critical \u2014 Read Immediately', color: 'var(--red)' };
-  if (score >= 8) return { label: 'High Priority', color: 'var(--orange)' };
-  if (score >= 5) return { label: 'Medium Priority', color: 'var(--yellow)' };
+function getPriorityClass(s) { return s >= 10 ? 'p-high' : s >= 5 ? 'p-med' : 'p-low'; }
+function getPriorityBucket(s) {
+  if (s >= 12) return { label: 'Critical \u2014 Read Immediately', color: 'var(--red)' };
+  if (s >= 8) return { label: 'High Priority', color: 'var(--orange)' };
+  if (s >= 5) return { label: 'Medium Priority', color: 'var(--yellow)' };
   return { label: 'Worth Reading', color: 'var(--green)' };
 }
 
 function renderSummary(item) {
   const s = item.ai_status || 'pending';
   if (s === 'done' && item.ai_summary) {
-    const displayTitle = item.ai_title && item.ai_title !== item.title
-      ? `<strong>${esc(item.ai_title)}</strong><br>` : '';
-    const approachLabel = item.ai_approach === 'full' ? 'fetched content' : 'inferred from URL';
-    return `<div class="item-summary">
-      <div class="summary-label">Gemma 4 Summary <span class="approach-tag">(${approachLabel})</span></div>
-      ${displayTitle}${esc(item.ai_summary)}
-    </div>`;
+    const dt = item.ai_title && item.ai_title !== item.title ? `<strong>${esc(item.ai_title)}</strong><br>` : '';
+    const al = item.ai_approach === 'full' ? 'fetched content' : 'inferred from URL';
+    return `<div class="item-summary"><div class="summary-label">Gemma 4 Summary <span class="approach-tag">(${al})</span></div>${dt}${esc(item.ai_summary)}</div>`;
   }
-  if (s === 'processing') {
-    return `<div class="item-summary ai-processing">
-      <div class="summary-label" style="color:var(--yellow)"><div class="ai-spinner" style="border-color:var(--yellow);border-top-color:transparent;width:8px;height:8px"></div> Gemma 4 summarizing...</div>
-    </div>`;
-  }
-  if (s === 'failed') {
-    return `<div class="item-summary ai-failed">
-      <div class="summary-label" style="color:var(--red)">Summary failed</div>
-      Click retry to try again
-    </div>`;
-  }
-  // pending — show nothing (will process soon)
+  if (s === 'processing') return `<div class="item-summary ai-processing"><div class="summary-label" style="color:var(--yellow)"><div class="ai-spinner" style="border-color:var(--yellow);border-top-color:transparent;width:8px;height:8px"></div> Summarizing...</div></div>`;
+  if (s === 'failed') return `<div class="item-summary ai-failed"><div class="summary-label" style="color:var(--red)">Summary failed</div>Click retry to try again</div>`;
   return '';
 }
-
 function renderAttachments(item) {
   const atts = item.attachments || [];
-  if (atts.length === 0) return '';
-
-  const items = atts.map(att => {
-    const isImage = /\.(png|jpg|jpeg|gif|webp)$/i.test(att.filename);
+  if (!atts.length) return '';
+  return `<div class="item-attachments">${atts.map(att => {
+    const isImg = /\.(png|jpg|jpeg|gif|webp)$/i.test(att.filename);
     const isPdf = /\.pdf$/i.test(att.filename);
-    const icon = isImage ? '\u{1F5BC}' : isPdf ? '\u{1F4C4}' : '\u{1F4CE}';
-
+    const icon = isImg ? '\u{1F5BC}' : isPdf ? '\u{1F4C4}' : '\u{1F4CE}';
     return `<a href="/uploads/${esc(att.filename)}" target="_blank" class="attachment" title="${esc(att.originalName)}">
-      ${isImage ? `<img src="/uploads/${esc(att.filename)}" class="attachment-thumb" alt="">` : `<span class="attachment-icon">${icon}</span>`}
-      <span>${esc(att.originalName.length > 20 ? att.originalName.slice(0,17) + '...' : att.originalName)}</span>
+      ${isImg ? `<img src="/uploads/${esc(att.filename)}" class="attachment-thumb" alt="">` : `<span class="attachment-icon">${icon}</span>`}
+      <span>${esc(att.originalName.length > 20 ? att.originalName.slice(0,17)+'...' : att.originalName)}</span>
       <span class="att-del" onclick="event.preventDefault();event.stopPropagation();deleteAttachment(${item.id},'${esc(att.filename)}')">\u2715</span>
     </a>`;
-  }).join('');
-
-  return `<div class="item-attachments">${items}</div>`;
+  }).join('')}</div>`;
 }
 
 function renderItem(item, opts = {}) {
   const { showRank, rank, showPriority, isDone } = opts;
   const a = item.analysis;
-
-  // Use AI title if available and original title is just a domain
-  const displayTitle = item.ai_title && (!item.title || item.title.length < 5) ? item.ai_title : item.title;
-
-  const titleContent = item.url
-    ? `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(displayTitle || formatUrl(item.url))}</a>`
-    : esc(displayTitle || 'Untitled');
-
-  const notesLinks = item.notes ? item.notes.split('\n').filter(n => n.startsWith('http')).map(n =>
-    `<a href="${esc(n)}" target="_blank" rel="noopener">${esc(formatUrl(n))}</a>`
-  ).join(' \u00B7 ') : '';
-
+  const dt = item.ai_title && (!item.title || item.title.length < 5) ? item.ai_title : item.title;
+  const tc = item.url ? `<a href="${esc(item.url)}" target="_blank">${esc(dt || formatUrl(item.url))}</a>` : esc(dt || 'Untitled');
+  const nl = item.notes ? item.notes.split('\n').filter(n => n.startsWith('http')).map(n => `<a href="${esc(n)}" target="_blank">${esc(formatUrl(n))}</a>`).join(' \u00B7 ') : '';
   const showRetry = (item.ai_status === 'failed' || item.ai_status === 'pending');
 
-  return `
-    <div class="item ${isDone ? 'is-done' : ''}" id="item-${item.id}">
-      ${showRank ? `<div class="item-rank">${rank}</div>` : ''}
-      ${showPriority ? `<div class="item-priority ${getPriorityClass(a.priority_score)}">${a.priority_score}</div>` : ''}
-      <div class="item-body">
-        <div class="item-title">${titleContent}</div>
-        ${item.url ? `<div class="item-url"><a href="${esc(item.url)}" target="_blank">${formatUrl(item.url)}</a></div>` : ''}
-        ${notesLinks ? `<div class="item-url">${notesLinks}</div>` : ''}
-        ${renderSummary(item)}
-        ${renderAttachments(item)}
-        <div class="item-meta">
-          <span class="item-date">Added: ${formatDate(item.created_at)}</span>
-          ${isDone && item.completed_at ? `<span class="done-date">Read: ${formatDate(item.completed_at)}</span>` : ''}
-          ${pillarTags(a)}
-          ${a.is_experiment ? '<span class="pillar-tag tag-experiment">Experiment</span>' : ''}
-          ${a.is_content ? '<span class="pillar-tag tag-content">Content</span>' : ''}
-        </div>
+  return `<div class="item ${isDone ? 'is-done' : ''}" id="item-${item.id}">
+    ${showRank ? `<div class="item-rank">${rank}</div>` : ''}
+    ${showPriority ? `<div class="item-priority ${getPriorityClass(a.priority_score)}">${a.priority_score}</div>` : ''}
+    <div class="item-body">
+      <div class="item-title">${tc}</div>
+      ${item.url ? `<div class="item-url"><a href="${esc(item.url)}" target="_blank">${formatUrl(item.url)}</a></div>` : ''}
+      ${nl ? `<div class="item-url">${nl}</div>` : ''}
+      ${renderSummary(item)}
+      ${renderAttachments(item)}
+      <div class="item-meta">
+        <span class="item-date">Added: ${formatDate(item.created_at)}</span>
+        ${isDone && item.completed_at ? `<span class="done-date">Read: ${formatDate(item.completed_at)}</span>` : ''}
+        ${pillarTags(a)}
+        ${a.is_experiment ? '<span class="pillar-tag tag-experiment">Experiment</span>' : ''}
+        ${a.is_content ? '<span class="pillar-tag tag-content">Content</span>' : ''}
       </div>
-      <div class="item-actions">
-        <div class="item-actions-row">
-          ${isDone
-            ? `<button class="action-btn undo-btn" onclick="markPending(${item.id})" title="Mark unread">\u21B6</button>`
-            : `<button class="action-btn" onclick="markDone(${item.id})" title="Mark as read">\u2713</button>`
-          }
-          <button class="action-btn del-btn" onclick="deleteItem(${item.id})" title="Delete">\u2715</button>
-        </div>
-        <div class="item-actions-row">
-          ${showRetry ? `<button class="action-btn retry-btn" onclick="retrySummarize(${item.id})" title="Summarize with Gemma 4">\u2728</button>` : ''}
-          <button class="action-btn attach-btn" onclick="triggerUpload(${item.id})" title="Attach file">\u{1F4CE}</button>
-        </div>
+    </div>
+    <div class="item-actions">
+      <div class="item-actions-row">
+        ${isDone ? `<button class="action-btn undo-btn" onclick="markPending(${item.id})" title="Unread">\u21B6</button>`
+          : `<button class="action-btn" onclick="markDone(${item.id})" title="Done">\u2713</button>`}
+        <button class="action-btn del-btn" onclick="deleteItem(${item.id})" title="Delete">\u2715</button>
       </div>
-    </div>`;
+      <div class="item-actions-row">
+        ${showRetry ? `<button class="action-btn retry-btn" onclick="retrySummarize(${item.id})" title="Summarize">\u2728</button>` : ''}
+        <button class="action-btn attach-btn" onclick="triggerUpload(${item.id})" title="Attach">\u{1F4CE}</button>
+      </div>
+    </div>
+  </div>`;
 }
 
 function render(items) {
-  if (!items || items.length === 0) {
-    const messages = {
+  if (!items || !items.length) {
+    const msgs = {
       all: 'No items in your backlog. Paste a link above to get started.',
       prioritized: 'No items match your AI&Beyond priorities yet.',
       experiments: 'No experiment candidates detected yet.',
       content: 'No content creation opportunities found yet.',
       done: 'Nothing completed yet. Start reading!'
     };
-    $list.innerHTML = `<div class="list-empty"><div class="emoji">${currentTab === 'done' ? '\u{1F680}' : '\u{1F4DA}'}</div><p>${messages[currentTab]}</p></div>`;
+    $list.innerHTML = `<div class="list-empty"><div class="emoji">${currentTab==='done'?'\u{1F680}':'\u{1F4DA}'}</div><p>${msgs[currentTab]}</p></div>`;
     return;
   }
-
-  // Summarize All button for unsummarized items
   const unsummarized = items.filter(i => i.ai_status === 'pending' || i.ai_status === 'failed').length;
-  let topBar = '';
+  let top = '';
   if (unsummarized > 0 && currentTab !== 'done') {
-    topBar = `<div class="summarize-all-bar">
-      <button class="summarize-all-btn" onclick="summarizeAll()">
-        \u2728 Summarize ${unsummarized} unsummarized
-      </button>
-    </div>`;
+    top = `<div class="summarize-all-bar"><button class="summarize-all-btn" onclick="summarizeAll()">\u2728 Summarize ${unsummarized} unsummarized</button></div>`;
   }
-
   if (currentTab === 'prioritized') {
     const buckets = {};
     items.forEach((item, i) => {
-      const bucket = getPriorityBucket(item.analysis.priority_score);
-      if (!buckets[bucket.label]) buckets[bucket.label] = { color: bucket.color, items: [] };
-      buckets[bucket.label].items.push({ item, rank: i + 1 });
+      const b = getPriorityBucket(item.analysis.priority_score);
+      if (!buckets[b.label]) buckets[b.label] = { color: b.color, items: [] };
+      buckets[b.label].items.push({ item, rank: i + 1 });
     });
-
-    let html = topBar;
+    let html = top;
     for (const [label, data] of Object.entries(buckets)) {
       html += `<div class="priority-group-header"><span class="dot" style="background:${data.color}"></span>${label}</div>`;
-      data.items.forEach(({ item, rank }) => {
-        html += renderItem(item, { showRank: true, rank, showPriority: true });
-      });
+      data.items.forEach(({ item, rank }) => { html += renderItem(item, { showRank: true, rank, showPriority: true }); });
     }
     $list.innerHTML = html;
     return;
   }
-
-  if (currentTab === 'done') {
-    $list.innerHTML = items.map(item => renderItem(item, { isDone: true })).join('');
-    return;
-  }
-
-  $list.innerHTML = topBar + items.map(item => renderItem(item, {})).join('');
+  if (currentTab === 'done') { $list.innerHTML = items.map(item => renderItem(item, { isDone: true })).join(''); return; }
+  $list.innerHTML = top + items.map(item => renderItem(item, {})).join('');
 }
 
 // ====== Actions ======
@@ -852,57 +787,41 @@ async function markDone(id) {
   toast('Marked as read');
   setTimeout(loadTab, 300);
 }
-
 async function markPending(id) {
   await api(`/items/${id}`, { method: 'PATCH', body: { status: 'pending' } });
   toast('Moved back to backlog');
   loadTab();
 }
-
 async function deleteItem(id) {
   const el = document.getElementById('item-' + id);
   if (el) el.classList.add('removing');
   await api(`/items/${id}`, { method: 'DELETE' });
   setTimeout(loadTab, 300);
 }
-
 async function retrySummarize(id) {
-  toast('Summarizing with Gemma 4...');
+  toast('Summarizing...');
   fetch(`/api/items/${id}/summarize`, { method: 'POST' });
-  // Refresh after a delay to show processing state
   setTimeout(loadTab, 1000);
-  // Then poll
   setTimeout(loadTab, 8000);
   setTimeout(loadTab, 15000);
 }
-
 async function summarizeAll() {
-  const result = await api('/summarize-all', { method: 'POST' });
-  toast(result.message);
+  const r = await api('/summarize-all', { method: 'POST' });
+  toast(r.message);
   checkAiStatus();
 }
 
+// ====== File Upload & Screenshot Paste ======
 function triggerUpload(id) {
   uploadTargetId = id;
   $fileUpload.click();
 }
 
-async function handleUpload(file) {
-  if (!uploadTargetId || !file) return;
+async function uploadFileToItem(itemId, file) {
   const formData = new FormData();
   formData.append('file', file);
-
-  const res = await fetch(`/api/items/${uploadTargetId}/attachments`, {
-    method: 'POST',
-    body: formData
-  });
-  if (res.ok) {
-    toast('File attached!');
-    loadTab();
-  } else {
-    toast('Upload failed');
-  }
-  uploadTargetId = null;
+  const res = await fetch(`/api/items/${itemId}/attachments`, { method: 'POST', body: formData });
+  return res.ok;
 }
 
 async function deleteAttachment(itemId, filename) {
@@ -910,24 +829,90 @@ async function deleteAttachment(itemId, filename) {
   loadTab();
 }
 
-async function batchImport() {
-  const text = document.getElementById('import-text').value.trim();
-  if (!text) return;
-  const result = await api('/items/batch', { method: 'POST', body: { text } });
-  toast(`Imported ${result.imported} items. Gemma 4 summarizing...`);
-  document.getElementById('import-text').value = '';
-  document.getElementById('import-modal').classList.remove('open');
+// Open attach modal with file preview + URL input
+function openAttachModal(file) {
+  pendingFile = file;
+  const preview = document.getElementById('attach-preview');
+  const isImage = file.type.startsWith('image/');
+  if (isImage) {
+    const url = URL.createObjectURL(file);
+    preview.innerHTML = `<img src="${url}" alt="Preview"><div class="file-name">${esc(file.name)}</div>`;
+  } else {
+    preview.innerHTML = `<div style="font-size:32px;margin-bottom:8px">\u{1F4C4}</div><div class="file-name">${esc(file.name)}</div>`;
+  }
+  document.getElementById('attach-url').value = '';
+  document.getElementById('attach-title').value = '';
+  document.getElementById('attach-modal').classList.add('open');
+}
+
+async function saveAttachment() {
+  if (!pendingFile) return;
+  const url = document.getElementById('attach-url').value.trim();
+  const title = document.getElementById('attach-title').value.trim();
+
+  // If we have a URL or title, create a new item first
+  let targetId = uploadTargetId;
+  if (!targetId && (url || title)) {
+    const raw = `${title || ''} ${url || ''}`.trim();
+    const newItem = await api('/items', { method: 'POST', body: { raw: raw || 'Attached file' } });
+    targetId = newItem.id;
+  } else if (!targetId) {
+    // No URL, no title, no target — create item with filename
+    const newItem = await api('/items', { method: 'POST', body: { raw: `Attached: ${pendingFile.name}` } });
+    targetId = newItem.id;
+  }
+
+  // Upload the file
+  const ok = await uploadFileToItem(targetId, pendingFile);
+  if (ok) {
+    toast('Saved with attachment!');
+  } else {
+    toast('Upload failed');
+  }
+
+  pendingFile = null;
+  uploadTargetId = null;
+  document.getElementById('attach-modal').classList.remove('open');
   loadTab();
 }
 
-function toast(msg) {
-  $toast.textContent = msg;
-  $toast.classList.add('show');
-  setTimeout(() => $toast.classList.remove('show'), 2500);
-}
+// ====== Clipboard Paste (screenshots) ======
+document.addEventListener('paste', async (e) => {
+  // Don't intercept if user is typing in an input/textarea
+  const tag = document.activeElement?.tagName;
+  if (tag === 'TEXTAREA') return;
+
+  const items = e.clipboardData?.items;
+  if (!items) return;
+
+  for (const item of items) {
+    if (item.type.startsWith('image/')) {
+      e.preventDefault();
+      const file = item.getAsFile();
+      if (file) {
+        // If we have an uploadTargetId (clicked attach on an item), upload directly
+        if (uploadTargetId) {
+          const ok = await uploadFileToItem(uploadTargetId, file);
+          if (ok) toast('Screenshot attached!');
+          uploadTargetId = null;
+          loadTab();
+        } else {
+          // Open modal to add URL + title
+          openAttachModal(file);
+        }
+      }
+      return;
+    }
+  }
+  // If text paste in input field, let normal handler work
+});
 
 // ====== Event Listeners ======
-document.getElementById('add-btn').addEventListener('click', addItem);
+document.getElementById('add-btn').addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  addItem();
+});
 $input.addEventListener('keydown', e => { if (e.key === 'Enter') addItem(); });
 
 $input.addEventListener('paste', () => {
@@ -952,14 +937,44 @@ document.getElementById('open-import').addEventListener('click', () => {
 document.getElementById('import-cancel').addEventListener('click', () => {
   document.getElementById('import-modal').classList.remove('open');
 });
-document.getElementById('import-go').addEventListener('click', batchImport);
+document.getElementById('import-go').addEventListener('click', async () => {
+  const text = document.getElementById('import-text').value.trim();
+  if (!text) return;
+  const r = await api('/items/batch', { method: 'POST', body: { text } });
+  toast(`Imported ${r.imported} items. Gemma 4 summarizing...`);
+  document.getElementById('import-text').value = '';
+  document.getElementById('import-modal').classList.remove('open');
+  loadTab();
+});
 document.getElementById('import-modal').addEventListener('click', e => {
   if (e.target === e.currentTarget) document.getElementById('import-modal').classList.remove('open');
 });
 
+// Attach modal
+document.getElementById('attach-cancel').addEventListener('click', () => {
+  pendingFile = null; uploadTargetId = null;
+  document.getElementById('attach-modal').classList.remove('open');
+});
+document.getElementById('attach-save').addEventListener('click', saveAttachment);
+document.getElementById('attach-modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) {
+    pendingFile = null; uploadTargetId = null;
+    document.getElementById('attach-modal').classList.remove('open');
+  }
+});
+
+// File input change (from paperclip button)
 $fileUpload.addEventListener('change', e => {
-  if (e.target.files.length > 0) handleUpload(e.target.files[0]);
-  e.target.value = ''; // reset
+  if (e.target.files.length > 0) {
+    const file = e.target.files[0];
+    if (uploadTargetId) {
+      // Direct attach to existing item — but also show modal for optional URL
+      openAttachModal(file);
+    } else {
+      openAttachModal(file);
+    }
+  }
+  e.target.value = '';
 });
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
