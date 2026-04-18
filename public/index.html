@@ -421,6 +421,16 @@ const $input = document.getElementById('quick-input');
 const $toast = document.getElementById('toast');
 const $fileUpload = document.getElementById('file-upload');
 
+// ====== Toast notifications ======
+let toastTimer = null;
+function toast(msg) {
+  if (!$toast) return;
+  $toast.textContent = msg;
+  $toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => $toast.classList.remove('show'), 2500);
+}
+
 // ====== API ======
 async function api(path, opts = {}) {
   const res = await fetch('/api' + path, {
